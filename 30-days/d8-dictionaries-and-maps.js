@@ -1,6 +1,3 @@
-// not working yet 9/25
-
-
 function processData(input) {
     //Enter your code here
     var inputArray = input.split('\n');    
@@ -17,12 +14,22 @@ function processData(input) {
     }
     //console.log(phoneBook);
     
-    for (var j = 0; j < lookups.length; j++) {
-        if (phoneBook.contains(entries[j])) {
-            console.log('hi');
-        }
+    var phoneMap = {};
+    for (var k = 0; k < phoneBook.length; k++) {
+        phoneMap[phoneBook[k][0]] = phoneBook[k][1];
     }
     
+    // console.log(phoneMap);
+    
+    
+    for (var j = 0; j < lookups.length; j++) {
+        if (phoneMap.hasOwnProperty(lookups[j])) {
+            console.log(lookups[j] + "=" + phoneMap[lookups[j]]);
+        } else {
+            console.log("Not found");
+        }
+    }
+
 } 
 
 process.stdin.resume();
